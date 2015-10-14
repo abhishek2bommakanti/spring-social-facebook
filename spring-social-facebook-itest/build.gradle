@@ -1,5 +1,15 @@
 apply plugin: 'eclipse'
 apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: 'maven'
+
+uploadArchives {
+	repositories {
+		mavenDeployer {
+			mavenLocal()
+		}
+	}
+}
 
 buildscript {
     repositories {

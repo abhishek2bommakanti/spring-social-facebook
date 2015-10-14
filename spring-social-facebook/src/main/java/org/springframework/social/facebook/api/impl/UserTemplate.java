@@ -50,7 +50,11 @@ class UserTemplate implements UserOperations {
 	}
 
 	public User getUserProfile(String facebookId) {
-		return graphApi.fetchObject(facebookId, User.class, PROFILE_FIELDS);
+		// Using PROFILE_FIELDS here causes Facebook profile fetch to break.
+		// Fetching only the fields that GuestPlate needs
+		
+		// return graphApi.fetchObject(facebookId, User.class, PROFILE_FIELDS);
+		return graphApi.fetchObject(facebookId, User.class, "id", "name", "email", "first_name", "last_name");
 	}
 	
 	public byte[] getUserProfileImage() {

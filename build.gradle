@@ -21,6 +21,26 @@ configure(allprojects - docProjects) {
     apply plugin: 'eclipse'
     apply plugin: 'idea'
     apply plugin: 'javadocHotfix'
+	apply plugin: 'maven-publish'
+	apply plugin: 'maven'
+	
+	group = 'org.springframework.social'
+	
+	publishing {
+		publications {
+			mavenJava(MavenPublication) {
+				from components.java
+			}
+		}
+	}
+	
+	uploadArchives {
+		repositories {
+			mavenDeployer {
+				mavenLocal()
+			}
+		}
+	}
 
     group = 'org.springframework.social'
 
